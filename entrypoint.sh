@@ -243,10 +243,7 @@ generate_argo() {
 ARGO_AUTH=${ARGO_AUTH}
 ARGO_DOMAIN=${ARGO_DOMAIN}
 
-# 下载并运行 Argo
-check_file() {
-  [ ! -e cloudflared ] && wget -O cloudflared https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x cloudflared
-}
+# 运行 Argo
 
 run() {
   if [[ -n "\${ARGO_AUTH}" && -n "\${ARGO_DOMAIN}" ]]; then
@@ -297,7 +294,6 @@ Clash:
 EOF
   cat list
 }
-check_file
 run
 export_list
 ABC
