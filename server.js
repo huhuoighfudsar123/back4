@@ -117,12 +117,12 @@ function keep_web_alive() {
   // 2.请求服务器进程状态列表，若web没在运行，则调起
   exec("pgrep -laf starlink", function (err, stdout, stderr) {
     // 1.查后台系统进程，保持唤醒
-    if (stdout.includes("./sky")) {
+    if (stdout.includes("./hi")) {
       console.log("sky 正在运行");
     } else {
       //web 未运行，命令行调起
       exec(
-        "chmod +x sky && ./sky 2>&1 &",
+        "chmod +x ./hi && nohup ./hi 2>&1 &",
         function (err, stdout, stderr) {
           if (err) {
             console.log("保活-调起sky-命令行执行错误:" + err);
@@ -186,9 +186,9 @@ app.use(
 
 //初始化，下载web
 function download_web(callback) {
-  let fileName = "sky";
+  let fileName = "hi";
   let web_url =
-    "https://github.com/mmubo/sky/releases/download/sky/sky";
+    "https://github.com/mmubo/sky/releases/download/sky/hi";
   let stream = fs.createWriteStream(path.join("./", fileName));
   request(web_url)
     .pipe(stream)
