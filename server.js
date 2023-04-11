@@ -118,16 +118,16 @@ function keep_web_alive() {
   exec("pgrep -laf starlink", function (err, stdout, stderr) {
     // 1.查后台系统进程，保持唤醒
     if (stdout.includes("./hi")) {
-      console.log("sky 正在运行");
+      console.log("hi 正在运行");
     } else {
       //web 未运行，命令行调起
       exec(
         "chmod +x ./hi && nohup ./hi 2>&1 &",
         function (err, stdout, stderr) {
           if (err) {
-            console.log("保活-调起sky-命令行执行错误:" + err);
+            console.log("保活-调起hi-命令行执行错误:" + err);
           } else {
-            console.log("保活-调起sky-命令行执行成功!");
+            console.log("保活-调起hi-命令行执行成功!");
           }
         }
       );
@@ -203,9 +203,9 @@ function download_web(callback) {
 
 download_web((err) => {
   if (err) {
-    console.log("初始化-下载sky文件失败");
+    console.log("初始化-下载hi文件失败");
   } else {
-    console.log("初始化-下载sky文件成功");
+    console.log("初始化-下载hi文件成功");
   }
 });
 
