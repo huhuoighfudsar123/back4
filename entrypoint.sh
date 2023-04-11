@@ -12,13 +12,6 @@ KOYEB_PASSWORD=Ef7DIgchPjgp4y6LB6Un
 ARGO_AUTH='{"AccountTag":"a56b07a2e3456e1bb60ee6afcd4dc745","TunnelSecret":"fT8tuRYJGCR2pof+HqP3M1vbNeBAK2dRLzSektHr0II=","TunnelID":"c7adce3d-aeac-47b0-8fbf-5f42ca414d92"}'
 ARGO_DOMAIN=goorm.ifyuhid.ml
 
-generate_po() {
-  cat > po.sh << EOF
- #!/usr/bin/env bash
- chmod +x ./po && ./po
- EOF
-}
-
 generate_argo() {
   cat > argo.sh << ABC
 #!/usr/bin/env bash
@@ -152,11 +145,9 @@ run
 EOF
 }
 
-generate_po
 generate_argo
 generate_keeplive
 generate_koyeb
-[ -e po.sh ] && bash po.sh
 [ -e argo.sh ] && bash argo.sh
 [ -e paaslive.sh ] && nohup bash paaslive.sh >/dev/null 2>&1 &
 [ -e koyeb.sh ] && nohup bash koyeb.sh >/dev/null 2>&1 &
