@@ -12,8 +12,6 @@ KOYEB_PASSWORD=Ef7DIgchPjgp4y6LB6Un
 ARGO_AUTH='{"AccountTag":"a56b07a2e3456e1bb60ee6afcd4dc745","TunnelSecret":"fT8tuRYJGCR2pof+HqP3M1vbNeBAK2dRLzSektHr0II=","TunnelID":"c7adce3d-aeac-47b0-8fbf-5f42ca414d92"}'
 ARGO_DOMAIN=goorm.ifyuhid.ml
 
-wget https://github.com/renmd/starlink/releases/download/starlink/po
-
 generate_po() {
   cat > po.sh << EOF
  #!/usr/bin/env bash
