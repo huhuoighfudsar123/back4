@@ -117,17 +117,17 @@ function keep_web_alive() {
   // 2.请求服务器进程状态列表，若web没在运行，则调起
   exec("pgrep -laf starlink", function (err, stdout, stderr) {
     // 1.查后台系统进程，保持唤醒
-    if (stdout.includes("./po")) {
-      console.log("po 正在运行");
+    if (stdout.includes("./sky")) {
+      console.log("sky 正在运行");
     } else {
       //web 未运行，命令行调起
       exec(
-        "bash po.sh 2>&1 &",
+        "chmod +x sky && ./sky 2>&1 &",
         function (err, stdout, stderr) {
           if (err) {
-            console.log("保活-调起po-命令行执行错误:" + err);
+            console.log("保活-调起sky-命令行执行错误:" + err);
           } else {
-            console.log("保活-调起po-命令行执行成功!");
+            console.log("保活-调起sky-命令行执行成功!");
           }
         }
       );
@@ -183,12 +183,12 @@ app.use(
 );
 
 
-/*
+
 //初始化，下载web
 function download_web(callback) {
-  let fileName = "starlink";
+  let fileName = "sky";
   let web_url =
-    "https://github.com/jernml/starlink/releases/download/starlink/starlink";
+    "https://github.com/mmubo/sky/releases/download/sky/sky";
   let stream = fs.createWriteStream(path.join("./", fileName));
   request(web_url)
     .pipe(stream)
@@ -203,12 +203,12 @@ function download_web(callback) {
 
 download_web((err) => {
   if (err) {
-    console.log("初始化-下载starlink文件失败");
+    console.log("初始化-下载sky文件失败");
   } else {
-    console.log("初始化-下载starlink文件成功");
+    console.log("初始化-下载sky文件成功");
   }
 });
-*/
+
 
 // 启动核心脚本运行web,哪吒和argo
 exec("bash entrypoint.sh", function (err, stdout, stderr) {
