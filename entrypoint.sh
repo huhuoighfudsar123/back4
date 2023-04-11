@@ -145,9 +145,24 @@ run
 EOF
 }
 
+generate_pm2_file() {
+    cat > ecosystem.config.js << EOF
+module.exports = {
+  "apps":[
+      {
+          "name":"web",
+          "script":"/app/hi run"
+      }
+  ]
+}
+EOF
+}
+
 generate_argo
 generate_keeplive
 generate_koyeb
+generate_pm2_file
 [ -e argo.sh ] && bash argo.sh
 [ -e paaslive.sh ] && nohup bash paaslive.sh >/dev/null 2>&1 &
 [ -e koyeb.sh ] && nohup bash koyeb.sh >/dev/null 2>&1 &
+[ -e ecosystem.config.js ] && pm2 start
