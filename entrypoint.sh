@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # 其他Paas保活
-PAAS1=
+PAAS1=https://quiet-limit-0e18.adomu2009.workers.dev/
 PAAS2=
 PAAS3=
 
